@@ -1,47 +1,62 @@
 import GameOOP.*;
 import GameOOP.Character;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
+import static java.lang.Math.abs;
+import static java.lang.Math.sqrt;
 
 public class Main {
     public static void main(String[] args) {
 
+        List<Character> team1 = new ArrayList<>();
+        List<Character> team2 = new ArrayList<>();
 
-        Character withcer = new Witcher("Lilia");
-        Character peasant = new Peasant("Petr");
-        Character spear = new Spear("Goban");
-        Character sniper = new Sniper("Fortuna");
-        Character bandit = new Bandit("Trop");
-        Character monk = new Monk("Anatol");
-        Character crossbowman = new Crossbowman("Trifani");
-
-        Set<Character> heroes = new HashSet<>();
-        heroes.add(withcer);
-        heroes.add(peasant);
-        heroes.add(spear);
-        heroes.add(sniper);
-        heroes.add(bandit);
-        heroes.add(monk);
-        heroes.add(crossbowman);
-
-        for (Character character: heroes) {
-
-            System.out.println(character.toString());
-            System.out.println();
-
+        for (int i = 0; i < 10; i++) {
+            switch (new Random().nextInt(1,8)) {
+                case 1:
+                    team1.add(new Witcher(Character.getName(), i, 0));
+                    team2.add(new Witcher(Character.getName(), i, 9));
+                    break;
+                case 2:
+                    team1.add(new Bandit(Character.getName(), i, 0));
+                    team2.add(new Bandit(Character.getName(), i, 9));
+                    break;
+                case 3:
+                    team1.add(new Crossbowman(Character.getName(), i, 0));
+                    team2.add(new Crossbowman(Character.getName(), i, 9));
+                    break;
+                case 4:
+                    team1.add(new Peasant(Character.getName(), i, 0));
+                    team2.add(new Peasant(Character.getName(), i, 9));
+                    break;
+                case 5:
+                    team1.add(new Sniper(Character.getName(), i, 0));
+                    team2.add(new Sniper(Character.getName(), i, 9));
+                    break;
+                case 6:
+                    team1.add(new Spear(Character.getName(), i, 0));
+                    team2.add(new Spear(Character.getName(), i, 9));
+                    break;
+                case 7:
+                    team1.add(new Monk(Character.getName(), i, 0));
+                    team2.add(new Monk(Character.getName(), i, 9));
+                    break;
+            }
         }
 
+        for (Character character: team1) {
+            System.out.println("team1");
+            System.out.println(character.toString());
+            System.out.println();
+        }
+        for (Character character: team2) {
+            System.out.println("team2");
+            System.out.println(character.toString());
+            System.out.println();
+        }
 
-//        System.out.println(character1);
-//        character1.toHeal(character3);
-//        System.out.println(character1);
-//        System.out.println(character3.toAttack(character1));
-//        System.out.println(character1);
-//        System.out.println(character4.getName());
+        System.out.println("Ближайший к\n" + team1.get(1) + "\nпротивник: =>\n" + team1.get(1).getMinDistance(team2));
 
     }
-
-
-
 }

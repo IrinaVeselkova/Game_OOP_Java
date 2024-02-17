@@ -1,7 +1,7 @@
 package GameOOP;
 
 public class Sniper extends Character{
-    public Sniper(String name){
-        super(name, "Goblin", 100, 100, 10, 10, 10, 10, 1, "Sniper");
+    public Sniper(String name, int x, int y){
+        super(x,y,name, "Goblin", 6, 24, 6, 1, 8, 6, 1, "Sniper");
     }
 }
