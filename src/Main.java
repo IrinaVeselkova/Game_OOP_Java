@@ -28,12 +28,12 @@ public class Main {
         int count=0;
         for (Character cbm : team1) {
             if (cbm.getClass().getSimpleName().equals("Crossbowman")||cbm.getClass().getSimpleName().equals("Sniper")) {
-                System.out.println("Ближайший к " + cbm.getName() + " противник: =>\n" + cbm.getMinDistance(team2));
+                System.out.println("Ближайший к " + cbm.getName()+", класс " + cbm.getClass().getSimpleName() + " противник: =>\n" + cbm.getMinDistance(team2));
                 System.out.println();
                 count++;
             }
-            if (count==0) System.out.println("В команде нет лучников и снайперов");
         }
+        if (count==0) System.out.println("В команде нет лучников и снайперов");
 
     }
 

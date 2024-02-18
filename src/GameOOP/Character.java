@@ -8,7 +8,7 @@ import static java.lang.Math.sqrt;
 
 public abstract class Character {
 
-    Place pos;
+    protected Place pos;
     protected String name;
     protected String race;
     protected int health;
