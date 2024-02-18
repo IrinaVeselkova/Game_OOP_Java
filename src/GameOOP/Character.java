@@ -41,7 +41,9 @@ public abstract class Character {
     public String getRace() {
         return this.race;
     }
-
+    public String getName(){
+        return this.name;
+    }
     public String getWeapon() {
         return this.weapon;
     }
@@ -108,14 +110,14 @@ public abstract class Character {
         return this.level;
     }
 
-    public static String getName() {
+    public static String getNewName() {
         return String.valueOf(Names.values()[new Random().nextInt(Names.values().length - 1)]);
     }
 
     public Character getMinDistance(List<Character> team) {
         // написать метод по поиску рядом находящегося противника
         double minDistance = sqrt(200);
-        Character nearEnemy = team.get(0);
+        Character nearEnemy = team.getFirst();
         for (Character character : team) {
             if (Place.getDistance(pos.getX(), pos.getY(), character.pos.getX(), character.pos.getY()) <= minDistance) {
                 nearEnemy = character;

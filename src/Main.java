@@ -25,11 +25,14 @@ public class Main {
             System.out.println();
         }
 // ищем в команде лучника (crossbowman) и находим к нему ближайшего противника
+        int count=0;
         for (Character cbm : team1) {
             if (cbm.getClass().getSimpleName().equals("Crossbowman")||cbm.getClass().getSimpleName().equals("Sniper")) {
-                System.out.println("Ближайший к\n" + cbm + "\nпротивник: =>\n" + cbm.getMinDistance(team2));
+                System.out.println("Ближайший к " + cbm.getName() + " противник: =>\n" + cbm.getMinDistance(team2));
                 System.out.println();
+                count++;
             }
+            if (count==0) System.out.println("В команде нет лучников и снайперов");
         }
 
     }
@@ -39,25 +42,25 @@ public class Main {
         for (int i = 0; i < quantityHeroes; i++) {
             switch (new Random().nextInt(1, 8)) {
                 case 1:
-                    team.add(new Witcher(Character.getName(), i, y));
+                    team.add(new Witcher(Character.getNewName(), i, y));
                     break;
                 case 2:
-                    team.add(new Bandit(Character.getName(), i, y));
+                    team.add(new Bandit(Character.getNewName(), i, y));
                     break;
                 case 3:
-                    team.add(new Crossbowman(Character.getName(), i, y));
+                    team.add(new Crossbowman(Character.getNewName(), i, y));
                     break;
                 case 4:
-                    team.add(new Peasant(Character.getName(), i, y));
+                    team.add(new Peasant(Character.getNewName(), i, y));
                     break;
                 case 5:
-                    team.add(new Sniper(Character.getName(), i, y));
+                    team.add(new Sniper(Character.getNewName(), i, y));
                     break;
                 case 6:
-                    team.add(new Spear(Character.getName(), i, y));
+                    team.add(new Spear(Character.getNewName(), i, y));
                     break;
                 case 7:
-                    team.add(new Monk(Character.getName(), i, y));
+                    team.add(new Monk(Character.getNewName(), i, y));
                     break;
             }
         }
