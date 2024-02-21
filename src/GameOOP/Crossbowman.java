@@ -7,10 +7,10 @@ public class Crossbowman extends Character {
     protected int arrows;
 
     public Crossbowman(String name, int x, int y, String nameTeam, int arrows) {
-        super(x, y, name, nameTeam, "Elf", 2, 2, 8, 5, 1, 5, 1, "Arbalet");
+        super(x, y, name, nameTeam, "Elf", 30, 30, 8, 5, 1, 5, 1, "Arbalet");
         this.arrows = arrows;
     }
-    public void Step(ArrayList<Character> team) {
+    public void getStep(ArrayList<Character> team) {
         if (Crossbowman.this.getHealth() > 0) {
             if (Crossbowman.this.getArrows() > 0) {
                 toAttack(getMinDistance(team));
@@ -27,6 +27,14 @@ public class Crossbowman extends Character {
     }
     private int getArrows() {
         return this.arrows;
+    }
+
+    @Override
+    public String toString() {
+        return "Имя героя: " + getName()+ ", класс: " + getClass().getSimpleName() + "; Команда: " + getNameTeam()
+                + "\nПринадлежность героя: " + getRace() + "; Текущее состояние здоровья: " + getHealth()+ "; Стрелы: " + getArrows()
+                + "; Координаты (" + pos.getX() + " : " + pos.getY() + ")"+ "; Приоритет: " + getSpeeed()
+                + "\n"+"-".repeat(20);
     }
 
 }

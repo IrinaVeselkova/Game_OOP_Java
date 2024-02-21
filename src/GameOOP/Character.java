@@ -86,15 +86,17 @@ public abstract class Character implements Step {
         return this.defense;
     }
 
-    public String toAttack(Character character) {
-        int damage = character.getStrength() - this.defense;
-        if (damage <= 0) {
+    public void toAttack(Character character) {
+        int damage = character.getHealth() + character.getDefense() - this.getStrength();
+        character.setHealth(character.getHealth() - damage);
+        if (character.getHealth() <= 0) {
             character.setHealth(0);
-            return ("Состояние " + character.getName() + " после атаки: герой умер");
+            System.out.println("Герой умер :(");
+        } else {
+            toUpLevel();
+
+            System.out.println("Состояние " + character.getName() + " после атаки: " + character.getHealth());
         }
-        toUpLevel();
-        this.health = this.health - damage;
-        return ("Состояние " + this.name + " после атаки: " + this.health);
 
     }
 
@@ -133,10 +135,10 @@ public abstract class Character implements Step {
 
     @Override
     public String toString() {
-        return "Имя героя: " + this.name+ ", класс: " + getClass().getSimpleName() + "; Команда: " + Character.this.getNameTeam()
+        return "Имя героя: " + this.name + ", класс: " + getClass().getSimpleName() + "; Команда: " + Character.this.getNameTeam()
                 + "\nПринадлежность героя: " + this.race + "; Текущее состояние здоровья: " + this.health
-                + "; Координаты (" + pos.X + " : " + pos.Y + ")"+ "; Приоритет: " + getSpeeed()
-                + "\n"+"-".repeat(20);
+                + "; Координаты (" + pos.X + " : " + pos.Y + ")" + "; Приоритет: " + getSpeeed()
+                + "\n" + "-".repeat(20);
     }
 
     public String getNameTeam() {
