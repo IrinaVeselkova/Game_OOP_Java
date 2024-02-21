@@ -6,7 +6,7 @@ import java.util.Random;
 
 import static java.lang.Math.sqrt;
 
-public abstract class Character {
+public abstract class Character implements Step {
 
     protected Place pos;
     protected String name;
@@ -19,10 +19,11 @@ public abstract class Character {
     protected int speed;
     protected int level;
     protected String weapon;
+    protected String nameTeam;
 
 
     //
-    public Character(int x, int y, String name, String race, int health, int maxHealth, int strength, int magic, int defense, int speed, int level, String weapon) {
+    public Character(int x, int y, String name, String nameTeam, String race, int health, int maxHealth, int strength, int magic, int defense, int speed, int level, String weapon) {
         this.defense = defense;
         this.health = health;
         this.maxHealth = maxHealth;
@@ -34,6 +35,7 @@ public abstract class Character {
         this.level = level;
         this.weapon = weapon;
         pos = new Place(x, y);
+        this.nameTeam = nameTeam;
 
 
     }
@@ -41,9 +43,11 @@ public abstract class Character {
     public String getRace() {
         return this.race;
     }
-    public String getName(){
+
+    public String getName() {
         return this.name;
     }
+
     public String getWeapon() {
         return this.weapon;
     }
@@ -106,7 +110,6 @@ public abstract class Character {
         this.strength = this.strength + 5;
         this.magic = this.magic + 5;
         this.defense = this.defense + 5;
-        this.speed = this.speed + 5;
         return this.level;
     }
 
@@ -130,11 +133,15 @@ public abstract class Character {
 
     @Override
     public String toString() {
-        return "Имя героя: " + this.name
-                + ", класс: " + getClass().getSimpleName()
-                + "\nПринадлежность героя: " + this.race
-                + "\nТекущее состояние здоровья: " + this.health
-                + "\nКоординаты (" + pos.X + " : " + pos.Y + ")";
+        return "Имя героя: " + this.name+ ", класс: " + getClass().getSimpleName() + "; Команда: " + Character.this.getNameTeam()
+                + "\nПринадлежность героя: " + this.race + "; Текущее состояние здоровья: " + this.health
+                + "; Координаты (" + pos.X + " : " + pos.Y + ")"+ "; Приоритет: " + getSpeeed()
+                + "\n"+"-".repeat(20);
     }
+
+    public String getNameTeam() {
+        return this.nameTeam;
+    }
+
 
 }

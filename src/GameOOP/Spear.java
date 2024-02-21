@@ -1,9 +1,15 @@
 package GameOOP;
 
-public class Spear extends Character {
-        public Spear(String name,int x, int y){
+import java.util.ArrayList;
 
-            super(x,y,name, "Elf", 20, 65, 6, 2, 5, 8, 1,"Spear");
+public class Spear extends Character {
+        public Spear(String name,int x, int y, String nameTeam){
+
+            super(x,y,name, nameTeam,"Elf", 20, 65, 6, 2, 5, 5, 1,"Spear");
         }
+    @Override
+    public void Step(ArrayList<Character> team) {
+
+    }
     }
 
