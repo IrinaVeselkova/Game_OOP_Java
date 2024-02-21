@@ -45,7 +45,8 @@ public class Main {
                 System.out.println(cbm);
             }
         }
-
+        allTeam.removeIf(hero -> hero.getHealth() == 0);
+        System.out.println("После атаки осталось: "+ allTeam.size()+ " героев");
     }
         static ArrayList<Character> createTeam ( int quantityHeroes, int y, String nameTeam){
             ArrayList<Character> team = new ArrayList<>();

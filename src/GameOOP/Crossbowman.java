@@ -10,11 +10,12 @@ public class Crossbowman extends Character {
         super(x, y, name, nameTeam, "Elf", 30, 30, 8, 5, 1, 5, 1, "Arbalet");
         this.arrows = arrows;
     }
+
     public void getStep(ArrayList<Character> team) {
         if (Crossbowman.this.getHealth() > 0) {
             if (Crossbowman.this.getArrows() > 0) {
+                System.out.println(this.name + " атаковал!");
                 toAttack(getMinDistance(team));
-                System.out.println("Атаковали!!!");
                 this.arrows--;
                 Crossbowman.this.setArrows(this.arrows);
             } else {
@@ -22,19 +23,21 @@ public class Crossbowman extends Character {
             }
         }
     }
+
     private void setArrows(int arrows) {
         this.arrows = arrows;
     }
+
     private int getArrows() {
         return this.arrows;
     }
 
     @Override
     public String toString() {
-        return "Имя героя: " + getName()+ ", класс: " + getClass().getSimpleName() + "; Команда: " + getNameTeam()
-                + "\nПринадлежность героя: " + getRace() + "; Текущее состояние здоровья: " + getHealth()+ "; Стрелы: " + getArrows()
-                + "; Координаты (" + pos.getX() + " : " + pos.getY() + ")"+ "; Приоритет: " + getSpeeed()
-                + "\n"+"-".repeat(20);
+        return "Имя героя: " + getName() + ", класс: " + getClass().getSimpleName() + "; Команда: " + getNameTeam()
+                + "\nПринадлежность героя: " + getRace() + "; Текущее состояние здоровья: " + getHealth() + "; Стрелы: " + getArrows()
+                + "; Координаты (" + pos.getX() + " : " + pos.getY() + ")" + "; Приоритет: " + getSpeeed()
+                + "\n" + "-".repeat(20);
     }
 
 }

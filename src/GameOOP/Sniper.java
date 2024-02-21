@@ -12,8 +12,8 @@ public class Sniper extends Character{
     public void getStep(ArrayList<Character> team) {
         if (Sniper.this.getHealth() > 0) {
             if (Sniper.this.getArrows() > 0) {
+                System.out.println(this.name + " атаковал!");
                 toAttack(getMinDistance(team));
-                System.out.println("Атаковали!!!");
                 this.arrows--;
                 Sniper.this.setArrows(this.arrows);
             } else {
