@@ -8,7 +8,7 @@ import static java.lang.Math.sqrt;
 
 public abstract class Character implements Step {
 
-    protected Place pos;
+
     protected String name;
     protected String race;
     protected int health;
@@ -23,7 +23,7 @@ public abstract class Character implements Step {
     protected Place place;
 
     //
-    public Character( String name, int x, int y, String nameTeam, String race, int health, int maxHealth, int strength, int magic, int defense, int speed, int level, String weapon) {
+    public Character(String name, int x, int y, String nameTeam, String race, int health, int maxHealth, int strength, int magic, int defense, int speed, int level, String weapon) {
         this.defense = defense;
         this.health = health;
         this.maxHealth = maxHealth;
@@ -34,7 +34,7 @@ public abstract class Character implements Step {
         this.speed = speed;
         this.level = level;
         this.weapon = weapon;
-        this.place= new Place(x,y);
+        this.place = new Place(x, y);
         this.nameTeam = nameTeam;
 
 
@@ -89,13 +89,13 @@ public abstract class Character implements Step {
     public void toAttack(Character character) {
         int damage = character.getHealth() + character.getDefense() - this.getStrength();
         character.setHealth(character.getHealth() - damage);
-        if (character.getHealth() <= 0) {
+        if (character.getHealth() < 0 || character.getHealth() == 0) {
             character.setHealth(0);
-            System.out.println(character.name + " " + character.nameTeam+ " умер :(");
+            System.out.println(character.name + " " + character.nameTeam + " умер :(");
         } else {
-            //toUpLevel();
+            toUpLevel();
 
-            System.out.println("Состояние " + character.getName()+ ", "+ character.nameTeam + " после атаки: " + character.getHealth());
+            System.out.println("Состояние " + character.getName() + ", " + character.nameTeam + " после атаки: " + character.getHealth());
         }
 
     }
@@ -109,8 +109,7 @@ public abstract class Character implements Step {
 
     private int toUpLevel() {
         this.level = this.level + 1;
-        this.strength = this.strength + 1;
-        this.defense = this.defense + 1;
+
         return this.level;
     }
 

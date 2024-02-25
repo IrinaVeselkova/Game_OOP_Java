@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         // создаем две команды и объединяем их в одну общую команду
         ArrayList<Character> team1 = createTeam(10, 9, "team1");
-        ArrayList<Character> team2 = createTeam(10, 9, "team2");
+        ArrayList<Character> team2 = createTeam(10, 0, "team2");
         ArrayList<Character> allTeam = new ArrayList<>(team1);
         allTeam.addAll(team2);
 
@@ -42,16 +42,19 @@ public class Main {
             for (Character unit : allTeam) {
                 if (team1.contains(unit)) unit.getStep(team2, team1);
                 else unit.getStep(team1, team2);
+                unit.toString();
                             }
             team1.removeIf(hero -> hero.getHealth() == 0);
             team2.removeIf(hero1 -> hero1.getHealth() == 0);
             allTeam.clear();
             allTeam.addAll(team1);
             allTeam.addAll(team2);
+            allTeam.sort((o1, o2) -> o2.getSpeeed() - o1.getSpeeed());
 
             System.out.println("После атаки осталось: " + allTeam.size() + " героев");
+
         }
-        for (Character t:allTeam) t.toString();
+
             }
 
     static ArrayList<Character> createTeam(int quantityHeroes, int y, String nameTeam) {

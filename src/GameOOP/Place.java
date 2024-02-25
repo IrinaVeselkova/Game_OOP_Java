@@ -29,7 +29,7 @@ public class Place {
         return new Place(place1.X - place2.X, place1.Y - place2.Y);
     }
     public boolean equals (Place place){
-        return this.X == place.X && this.Y == place.Y;
+        return X == place.X && Y == place.Y;
     }
 
 }
