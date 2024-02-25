@@ -1,13 +1,13 @@
 package GameOOP;
 
-import static java.lang.Math.abs;
+
 import static java.lang.Math.sqrt;
 
 public class Place {
 
     int X, Y;
 
-    Place(int x, int y) {
+    public Place(int x, int y) {
         X = x;
         Y = y;
     }
@@ -20,8 +20,16 @@ public class Place {
         return Y;
     }
 
-    public static double getDistance(int x1, int y1, int x2, int y2) {
-        return sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+    public static double getDistance(Place place1, Place place2) {
+        return sqrt((place2.X - place1.X) * (place2.X - place1.X) + (place2.Y - place1.Y) * (place2.Y - place1.Y));
+    }
+
+    public static Place getDifference(Place place1, Place place2) {
+
+        return new Place(place1.X - place2.X, place1.Y - place2.Y);
+    }
+    public boolean equals (Place place){
+        return this.X == place.X && this.Y == place.Y;
     }
 
 }

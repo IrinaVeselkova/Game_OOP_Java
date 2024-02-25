@@ -20,10 +20,10 @@ public abstract class Character implements Step {
     protected int level;
     protected String weapon;
     protected String nameTeam;
-
+    protected Place place;
 
     //
-    public Character(int x, int y, String name, String nameTeam, String race, int health, int maxHealth, int strength, int magic, int defense, int speed, int level, String weapon) {
+    public Character( String name, int x, int y, String nameTeam, String race, int health, int maxHealth, int strength, int magic, int defense, int speed, int level, String weapon) {
         this.defense = defense;
         this.health = health;
         this.maxHealth = maxHealth;
@@ -34,7 +34,7 @@ public abstract class Character implements Step {
         this.speed = speed;
         this.level = level;
         this.weapon = weapon;
-        pos = new Place(x, y);
+        this.place= new Place(x,y);
         this.nameTeam = nameTeam;
 
 
@@ -91,11 +91,11 @@ public abstract class Character implements Step {
         character.setHealth(character.getHealth() - damage);
         if (character.getHealth() <= 0) {
             character.setHealth(0);
-            System.out.println("Герой умер :(");
+            System.out.println(character.name + " " + character.nameTeam+ " умер :(");
         } else {
-            toUpLevel();
+            //toUpLevel();
 
-            System.out.println("Состояние " + character.getName() + " после атаки: " + character.getHealth());
+            System.out.println("Состояние " + character.getName()+ ", "+ character.nameTeam + " после атаки: " + character.getHealth());
         }
 
     }
@@ -109,9 +109,8 @@ public abstract class Character implements Step {
 
     private int toUpLevel() {
         this.level = this.level + 1;
-        this.strength = this.strength + 5;
-        this.magic = this.magic + 5;
-        this.defense = this.defense + 5;
+        this.strength = this.strength + 1;
+        this.defense = this.defense + 1;
         return this.level;
     }
 
@@ -124,9 +123,9 @@ public abstract class Character implements Step {
         double minDistance = sqrt(200);
         Character nearEnemy = team.getFirst();
         for (Character character : team) {
-            if (Place.getDistance(pos.getX(), pos.getY(), character.pos.getX(), character.pos.getY()) <= minDistance) {
+            if (Place.getDistance(this.place, character.place) <= minDistance) {
                 nearEnemy = character;
-                minDistance = Place.getDistance(pos.getX(), pos.getY(), character.pos.getX(), character.pos.getY());
+                minDistance = Place.getDistance(this.place, character.place);
             }
         }
 
@@ -137,7 +136,7 @@ public abstract class Character implements Step {
     public String toString() {
         return "Имя героя: " + this.name + ", класс: " + getClass().getSimpleName() + "; Команда: " + Character.this.getNameTeam()
                 + "\nПринадлежность героя: " + this.race + "; Текущее состояние здоровья: " + this.health
-                + "; Координаты (" + pos.X + " : " + pos.Y + ")" + "; Приоритет: " + getSpeeed()
+                + "; Координаты (" + place.X + " : " + place.Y + ")" + "; Приоритет: " + getSpeeed()
                 + "\n" + "-".repeat(20);
     }
 
