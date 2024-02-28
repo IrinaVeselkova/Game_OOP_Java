@@ -7,20 +7,27 @@ public class Crossbowman extends Character {
     protected int arrows;
 
     public Crossbowman(String name, int x, int y, String nameTeam, int arrows) {
-        super(name, new Place(x,y), nameTeam, "Elf", 30, 30, 8, 5, 1, 5, 1, "Arbalet");
+        super(name, new Place(x,y), nameTeam, "Elf", 30, 30, 4, 5, 1, 5, 1, "Arbalet");
         this.arrows = arrows;
     }
 
-    public void getStep(ArrayList<Character> team, ArrayList<Character> friend) {
+    public void getStep(ArrayList<Character> enemy, ArrayList<Character> friend) {
+
         if (getHealth() > 0) {
-            if (Crossbowman.this.getArrows() > 0) {
-                super.toAttack(getMinDistance(team));
+            if (this.getArrows() > 0) {
+                this.toAttack(getMinDistance(enemy));
                 this.arrows--;
-                Crossbowman.this.setArrows(this.arrows);
+
             }
         }
     }
-
+//    @Override
+//    public void getStep(ArrayList<Character> enemy, ArrayList<Character> friend) {
+//        if ((health <= 0) || (arrows == 0)) return;
+//        Character target = super.getMinDistance(enemy);
+//        target.toAttack(this);
+//        arrows--;
+//    }
     private void setArrows(int arrows) {
         this.arrows = arrows;
     }

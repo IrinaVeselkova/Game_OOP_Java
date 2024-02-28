@@ -121,7 +121,7 @@ public abstract class Character implements Step {
     public Character getMinDistance(List<Character> team) {
         // написать метод по поиску рядом находящегося противника
         double minDistance = sqrt(200);
-        Character nearEnemy = team.getFirst();
+        Character nearEnemy = null;
         for (Character character : team) {
             if ((Place.getDistance(this.place,character.place) < minDistance || Place.getDistance(this.place,character.place) == minDistance )&& character.getHealth()>0) {
                 nearEnemy = character;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Monk extends Character {
     public Monk(String name, int x, int y, String nameTeam){
-        super(name, new Place(x,y),nameTeam,"Human",20, 20, 4, 10, 3, 1, 1, "Null");
+        super(name, new Place(x,y),nameTeam,"Human",20, 20, 2, 10, 3, 1, 1, "Null");
     }
    /* Реализовать метод step() пехоты. Первое проверяем живы ли мы,
    потом ищем ближайшего противника. Если противник в соседней клетке,

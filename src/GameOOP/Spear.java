@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Spear extends Character {
         public Spear(String name,int x, int y, String nameTeam){
 
-            super(name, new Place(x,y), nameTeam,"Elf", 20, 20, 6, 2, 5, 4, 1,"Spear");
+            super(name, new Place(x,y), nameTeam,"Elf", 20, 20, 3, 2, 5, 5, 1,"Spear");
         }
     @Override
     public void getStep(ArrayList<Character > enemy, ArrayList<Character> friend) {

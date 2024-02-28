@@ -67,14 +67,14 @@ public class Main {
                     team.add(new Bandit(Character.getNewName(), i, y, nameTeam));
                     break;
                 case 3:
-                    team.add(new Crossbowman(Character.getNewName(), i, y, nameTeam, 20
+                    team.add(new Crossbowman(Character.getNewName(), i, y, nameTeam, 30
                     ));
                     break;
                 case 4:
                     team.add(new Peasant(Character.getNewName(), i, y, nameTeam));
                     break;
                 case 5:
-                    team.add(new Sniper(Character.getNewName(), i, y, nameTeam, 20));
+                    team.add(new Sniper(Character.getNewName(), i, y, nameTeam, 30));
                     break;
                 case 6:
                     team.add(new Spear(Character.getNewName(), i, y, nameTeam));

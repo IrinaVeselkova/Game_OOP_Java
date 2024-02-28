@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Bandit extends Character {
 
     public Bandit(String name, int x, int y, String nameTeam) {
-        super(name, new Place(x, y), nameTeam, "Goblin", 20, 20, 4, 0, 4, 4, 1, "Pistol");
+        super(name, new Place(x, y), nameTeam, "Goblin", 20, 20, 5, 0, 4, 5, 1, "Pistol");
     }
 
     @Override
