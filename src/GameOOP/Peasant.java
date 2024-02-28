@@ -7,11 +7,13 @@ import java.util.ArrayList;
 public class Peasant extends Character {
 
     public Peasant(String name,int x, int y, String nameTeam){
-        super(name, x,y, nameTeam,"Human", 30, 30, 5, 0, 1, 1, 1, "Sword");;
+        super(name, new Place(x,y), nameTeam,"Human", 20, 20, 5, 0, 1, 1, 1, "Sword");;
     }
     @Override
     public void getStep(ArrayList<Character> team, ArrayList<Character> friend) {
 
     }
-
+    public  String getInfo(){
+        return "Фермер";
+    }
 }

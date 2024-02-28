@@ -5,31 +5,29 @@ import static java.lang.Math.sqrt;
 
 public class Place {
 
-    int X, Y;
-
+    int X,Y;
     public Place(int x, int y) {
         X = x;
         Y = y;
     }
 
-    int getX() {
+    public int getX() {
         return X;
     }
 
-    int getY() {
+    public int getY() {
         return Y;
     }
 
-    public static double getDistance(Place place1, Place place2) {
-        return sqrt((place2.X - place1.X) * (place2.X - place1.X) + (place2.Y - place1.Y) * (place2.Y - place1.Y));
+    public static double getDistance(Place hero, Place target) {
+        return sqrt((hero.getX()- target.getX()) * (hero.getX()- target.getX()) + (hero.getY()- target.getY()) * (hero.getY()- target.getY()));
     }
 
-    public static Place getDifference(Place place1, Place place2) {
-
-        return new Place(place1.X - place2.X, place1.Y - place2.Y);
+    public static Place getDifference(Place hero,Place target) {
+        return new Place(hero.getX() - target.getX(), hero.getY() - target.Y);
     }
     public boolean equals (Place place){
-        return X == place.X && Y == place.Y;
+        return this.X == place.X && this.Y == place.Y;
     }
 
 }

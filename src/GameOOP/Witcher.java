@@ -8,7 +8,7 @@ public class Witcher extends Character {
 
 
     public Witcher(String name, int x, int y, String nameTeam) {
-        super(name, x,y, nameTeam, "Human", 60, 60, 10, 10, 10, 3, 1, "Sword");
+        super(name, new Place(x,y), nameTeam, "Human", 60, 60, 4, 4, 3, 3, 1, "Sword");
 
     }
 
@@ -16,7 +16,9 @@ public class Witcher extends Character {
     public void getStep(ArrayList<Character> team, ArrayList<Character> friends) {
 
     }
-
+    public  String getInfo(){
+        return "Ведьмак";
+    }
 }
 
 

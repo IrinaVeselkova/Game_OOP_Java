@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
 public abstract class Character implements Step {
@@ -20,10 +21,10 @@ public abstract class Character implements Step {
     protected int level;
     protected String weapon;
     protected String nameTeam;
-    protected Place place;
+    public Place place;
 
     //
-    public Character(String name, int x, int y, String nameTeam, String race, int health, int maxHealth, int strength, int magic, int defense, int speed, int level, String weapon) {
+    public Character(String name, Place place, String nameTeam, String race, int health, int maxHealth, int strength, int magic, int defense, int speed, int level, String weapon) {
         this.defense = defense;
         this.health = health;
         this.maxHealth = maxHealth;
@@ -34,7 +35,7 @@ public abstract class Character implements Step {
         this.speed = speed;
         this.level = level;
         this.weapon = weapon;
-        this.place = new Place(x, y);
+        this.place=place;
         this.nameTeam = nameTeam;
 
 
@@ -91,11 +92,11 @@ public abstract class Character implements Step {
         character.setHealth(character.getHealth() - damage);
         if (character.getHealth() < 0 || character.getHealth() == 0) {
             character.setHealth(0);
-            System.out.println(character.name + " " + character.nameTeam + " умер :(");
+
         } else {
             toUpLevel();
 
-            System.out.println("Состояние " + character.getName() + ", " + character.nameTeam + " после атаки: " + character.getHealth());
+
         }
 
     }
@@ -122,9 +123,9 @@ public abstract class Character implements Step {
         double minDistance = sqrt(200);
         Character nearEnemy = team.getFirst();
         for (Character character : team) {
-            if (Place.getDistance(this.place, character.place) <= minDistance) {
+            if ((Place.getDistance(this.place,character.place) < minDistance || Place.getDistance(this.place,character.place) == minDistance )&& character.getHealth()>0) {
                 nearEnemy = character;
-                minDistance = Place.getDistance(this.place, character.place);
+                minDistance = Place.getDistance(this.place,character.place);
             }
         }
 
@@ -133,10 +134,10 @@ public abstract class Character implements Step {
 
     @Override
     public String toString() {
-        return "Имя героя: " + this.name + ", класс: " + getClass().getSimpleName() + "; Команда: " + Character.this.getNameTeam()
-                + "\nПринадлежность героя: " + this.race + "; Текущее состояние здоровья: " + this.health
-                + "; Координаты (" + place.X + " : " + place.Y + ")" + "; Приоритет: " + getSpeeed()
-                + "\n" + "-".repeat(20);
+        return "Имя героя: " + this.name + ", класс: " + getClass().getSimpleName() + "; \u2665: " + this.health
+                + " ⚔" + this.strength
+                + "\uD83D\uDEE1\uFE0F" + this.defense;
+//
     }
 
     public String getNameTeam() {
@@ -144,4 +145,7 @@ public abstract class Character implements Step {
     }
 
 
+    public  String getInfo(){
+        return "";
+    }
 }
