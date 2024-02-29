@@ -12,10 +12,17 @@ public class Crossbowman extends Character {
     }
 
     public void getStep(ArrayList<Character> enemy, ArrayList<Character> friend) {
-
+        Character target = super.getMinDistance(enemy);
+        if (target==null) return;
         if (getHealth() > 0) {
             if (this.getArrows() > 0) {
-                this.toAttack(getMinDistance(enemy));
+                this.toAttack(target);
+                for(Character unit: friend){
+                    if (unit.getInfo().equals("Фермер")&&!((Peasant)unit).flag) {
+                        ((Peasant)unit).flag=true;
+                        return;
+                    }
+                }
                 this.arrows--;
 
             }
@@ -25,6 +32,7 @@ public class Crossbowman extends Character {
 //    public void getStep(ArrayList<Character> enemy, ArrayList<Character> friend) {
 //        if ((health <= 0) || (arrows == 0)) return;
 //        Character target = super.getMinDistance(enemy);
+//           if (target == null) return;
 //        target.toAttack(this);
 //        arrows--;
 //    }
