@@ -8,27 +8,23 @@ import java.util.ArrayList;
 public abstract class Infantry extends Character {
     public Infantry(String name,int x, int y, String nameTeam){
 
-        super(name, new Place(x,y), nameTeam,"Elf", 20, 20, 3, 2, 5, 5, 1,"Spear");
+        super(name, new Place(x,y), nameTeam,"Elf", 20, 20, 3, 2, 3, 5, 1,"Spear");
     }
     @Override
     public void getStep(ArrayList<Character > enemy, ArrayList<Character> friend) {
         if (health<=0) return;
-
         Character target = super.getMinDistance(enemy);
+        if (target==null) return;
         if (Place.getDistance(this.place,target.place) < 2){
             this.toAttack(target);
             return;
         }
         Place diff = Place.getDifference(this.place,target.place);
-
         Place newposition = new Place(place.getX(), place.getY());
-
         if (Math.abs(diff.getX()) > Math.abs(diff.getY())){
-
             newposition.X += diff.getX() < 0 ? 1 : -1;}
         else
         {newposition.Y+= diff.getY() < 0 ? 1 : -1;}
-
         for (Character unit : friend) {
             if (unit.place.equals(newposition)&&unit.getHealth()>0) {
                 unit.place.X=this.place.getX();
@@ -37,6 +33,5 @@ public abstract class Infantry extends Character {
             }
         }
         this.place = newposition;
-        System.out.println(this.name + " текущая позиция ("+ place.X + ":" + place.Y+")");
     }
 }

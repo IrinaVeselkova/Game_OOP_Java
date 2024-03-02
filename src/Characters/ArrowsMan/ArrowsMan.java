@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public abstract class ArrowsMan extends Character {
     protected  int arrows;
     public ArrowsMan(String name, int x, int y, String nameTeam, int arrows) {
-        super(name, new Place(x,y), nameTeam,"Goblin", 20, 20, 5, 1, 5, 5, 1, "Sniper");
+        super(name, new Place(x,y), nameTeam,"Goblin", 20, 20, 3, 1, 5, 5, 1, "Sniper");
         this.arrows=arrows;
     }
 

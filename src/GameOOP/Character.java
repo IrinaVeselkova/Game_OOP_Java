@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static java.lang.Math.abs;
-import static java.lang.Math.sqrt;
+import static java.lang.Math.*;
 
 public abstract class Character implements Step {
 
@@ -37,18 +36,13 @@ public abstract class Character implements Step {
         this.weapon = weapon;
         this.place=place;
         this.nameTeam = nameTeam;
-
-
     }
-
     public String getRace() {
         return this.race;
     }
-
     public String getName() {
         return this.name;
     }
-
     public String getWeapon() {
         return this.weapon;
     }
@@ -88,17 +82,13 @@ public abstract class Character implements Step {
     }
 
     public void toAttack(Character character) {
-        int damage = character.getHealth() + character.getDefense() - this.getStrength();
+        int damage = character.getHealth() + character.getDefense() - this.strength;
         character.setHealth(character.getHealth() - damage);
-        if (character.getHealth() < 0 || character.getHealth() == 0) {
+        if (character.getHealth() <= 0) {
             character.setHealth(0);
-
         } else {
             toUpLevel();
-
-
         }
-
     }
 
     public int toHeal(Character character) {
@@ -123,7 +113,7 @@ public abstract class Character implements Step {
         double minDistance = sqrt(200);
         Character nearEnemy = null;
         for (Character character : team) {
-            if ((Place.getDistance(this.place,character.place) < minDistance || Place.getDistance(this.place,character.place) == minDistance )&& character.getHealth()>0) {
+            if ((Place.getDistance(this.place,character.place) <= minDistance && character.getHealth()>0) ){
                 nearEnemy = character;
                 minDistance = Place.getDistance(this.place,character.place);
             }
@@ -134,7 +124,7 @@ public abstract class Character implements Step {
 
     @Override
     public String toString() {
-        return "Имя героя: " + this.name + ", класс: " + getClass().getSimpleName() + "; \u2665: " + this.health
+        return "Имя героя: " + this.getName()+ ", класс: " + getClass().getSimpleName() + "; \u2665: " + this.health
                 + " ⚔" + this.strength
                 + "\uD83D\uDEE1\uFE0F" + this.defense;
 //
