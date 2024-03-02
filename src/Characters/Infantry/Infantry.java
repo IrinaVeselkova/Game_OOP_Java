@@ -1,14 +1,15 @@
-package GameOOP;
+package Characters.Infantry;
+
+import GameOOP.Character;
+import GameOOP.Place;
 
 import java.util.ArrayList;
 
+public abstract class Infantry extends Character {
+    public Infantry(String name,int x, int y, String nameTeam){
 
-
-public class Spear extends Character {
-        public Spear(String name,int x, int y, String nameTeam){
-
-            super(name, new Place(x,y), nameTeam,"Elf", 20, 20, 3, 2, 5, 5, 1,"Spear");
-        }
+        super(name, new Place(x,y), nameTeam,"Elf", 20, 20, 3, 2, 5, 5, 1,"Spear");
+    }
     @Override
     public void getStep(ArrayList<Character > enemy, ArrayList<Character> friend) {
         if (health<=0) return;
@@ -31,19 +32,11 @@ public class Spear extends Character {
         for (Character unit : friend) {
             if (unit.place.equals(newposition)&&unit.getHealth()>0) {
                 unit.place.X=this.place.getX();
-               unit.place.Y=this.place.Y;
+                unit.place.Y=this.place.Y;
                 return;
             }
-
         }
         this.place = newposition;
         System.out.println(this.name + " текущая позиция ("+ place.X + ":" + place.Y+")");
-
-
-
     }
-    public  String getInfo(){
-        return "Копейщик";
-    }
-    }
-
+}
