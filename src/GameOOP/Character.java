@@ -12,7 +12,7 @@ public abstract class Character implements Step {
 
     protected String name;
     protected String race;
-    protected int health;
+    public int health;
     protected int maxHealth;
     protected int strength;
     protected int magic;
@@ -57,7 +57,7 @@ public abstract class Character implements Step {
         return this.health;
     }
 
-    private int setHealth(int health) {
+    public int setHealth(int health) {
         this.health = health;
         return this.health;
     }

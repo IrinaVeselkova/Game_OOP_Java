@@ -1,20 +1,18 @@
-package GameOOP;
+package Characters.Healers;
+
+import GameOOP.Character;
+import GameOOP.Place;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class Monk extends Character {
+public abstract class Healers extends Character {
     int mana;
-    public Monk(String name, int x, int y, String nameTeam){
+    public Healers(String name, int x, int y, String nameTeam){
         super(name, new Place(x,y),nameTeam,"Human",20, 20, 2, 10, 3, 1, 1, "Null");
-    mana=10;
+        mana=10;
     }
-   /* Реализовать метод step() пехоты. Первое проверяем живы ли мы,
-   потом ищем ближайшего противника. Если противник в соседней клетке,
-   наносим повреждение. Иначе двигаемся в сторну противника. Алгоритм движения,
-   если dX>dY двигаемся по x иначе по y. dX и dY (разница наших координат и ближайшего противника)
-   знаковые, от знака зависит направление. По своим не ходить!
-        */
+
     @Override
     public void getStep(ArrayList<Character> team, ArrayList<Character> friend) {
         if (getHealth()<=0) return;
@@ -37,20 +35,14 @@ public class Monk extends Character {
                 return;
             }
             else{
-                deadlist.sort(((o1, o2) -> o2.speed - o1.speed));
-                deadlist.getFirst().health = maxHealth;
+                deadlist.sort(((o1, o2) -> o2.getSpeeed() - o1.getSpeeed()));
+                deadlist.getFirst().setHealth(getMaxHealth());
                 mana=0;
                 System.out.println("Воскресил: " + deadlist.getFirst().getInfo());
                 return;
             }
-
         }
-
-        sortedlist.getFirst().health+=10;
+        sortedlist.getFirst().setHealth(10);
         mana-=2;
-    }
-
-    public  String getInfo(){
-        return "Монах";
     }
 }
