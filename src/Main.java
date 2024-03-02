@@ -19,9 +19,10 @@ public class Main {
         // объединяем их в одну общую команду
         allTeam.addAll(holyTeam);
         allTeam.addAll(darkTeam);
+        allTeam.sort((o1, o2) -> o2.getSpeeed() - o1.getSpeeed());
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            allTeam.sort((o1, o2) -> o2.getSpeeed() - o1.getSpeeed());
+
             View.view();
             scanner.nextLine();
             int count1 = 0;
@@ -32,11 +33,11 @@ public class Main {
             for (Character dark : holyTeam) {
                 count2 += dark.getHealth();
             }
-            if (count2 == 0) {
+            if (count2 <= 0) {
                 System.out.println("Победила команда holy!");
                 break;
             }
-            if (count1 == 0) {
+            if (count1 <= 0) {
                 System.out.println("Победила команда dark!");
 
                 break;
